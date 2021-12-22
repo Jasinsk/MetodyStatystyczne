@@ -51,3 +51,14 @@ plot.show()
 
 plot.scatter(data_pca[:, 0], data_pca[:, 1], c=cluster)
 plot.show()
+
+# Powtórzenie zadania dla klastryzacji k-means
+k_means = KMeans(n_clusters=3)
+clustering_k_means = k_means.fit_predict(data.iloc[:, :-1])
+means_kmeans = data.iloc[:, :-1].groupby(clustering_k_means).mean()
+
+plot.scatter(data_pca[:, 0], data_pca[:, 1], c=data['variety'])
+plot.show()
+
+plot.scatter(data_pca[:, 0], data_pca[:, 1], c=clustering_k_means)
+plot.show()
